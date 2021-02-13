@@ -10,7 +10,8 @@ defmodule BlogWeb.Application do
       # Start the Telemetry supervisor
       BlogWeb.Telemetry,
       # Start the Endpoint (http/https)
-      BlogWeb.Endpoint
+      BlogWeb.Endpoint,
+      {Phoenix.PubSub, name: BlogWeb.PubSub, adapter: Phoenix.PubSub.PG2}
       # Start a worker by calling: BlogWeb.Worker.start_link(arg)
       # {BlogWeb.Worker, arg}
     ]
