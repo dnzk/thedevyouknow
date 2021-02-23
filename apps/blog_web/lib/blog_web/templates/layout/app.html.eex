@@ -9,10 +9,8 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
   <body>
-    <main role="main" class="container">
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-      <%= @inner_content %>
-    </main>
+    <div class="homepage-logo">
+      <img src="/images/tdyk-150.png" alt="The Dev You Know" width="150" height="150" />
+    </div>
   </body>
 </html>
