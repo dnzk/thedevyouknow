@@ -8,8 +8,8 @@ defmodule Thedevyouknow.MixProject do
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       releases: [
-        blog_web: [
-          applications: [blog_web: :permanent]
+        app: [
+          applications: [blog_web: :permanent, admin_web: :permanent]
         ]
       ]
     ]
