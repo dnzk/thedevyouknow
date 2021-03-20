@@ -17,7 +17,8 @@ defmodule AdminWeb.Router do
   scope "/", AdminWeb do
     pipe_through :browser
 
-    live "/", PageLive, :index
+    live "/", AdminLive, :index
+    live "/create", CreateLive, :index
   end
 
   # Other scopes may use custom stacks.
