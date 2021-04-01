@@ -2,7 +2,7 @@
   <form class="blog-drafter__form">
     <div class="blog-drafter__form-field">
       <label for="title">Title</label>
-      <input id="title" type="text" name="title" />
+      <input phx-keyup="title-update" id="title" type="text" name="title" />
     </div>
     <div class="blog-drafter__form-field">
       <label for="excerpt">Excerpt</label>
@@ -14,10 +14,14 @@
     </div>
     <div class="blog-drafter__form-field">
       <label for="content">Content</label>
-      <textarea id="content" class="blog-drafter__content-field"></textarea>
+      <textarea phx-keyup="content-update" id="content" class="blog-drafter__content-field"></textarea>
     </div>
   </form>
   <div class="blog-drafter__preview">
-    <p>Preview goes here</p>
+    <p>LIVE PREVIEW:</p>
+    <div>
+      <h1><%= @preview.title %></h1>
+      <%= raw(@preview.content) %>
+    </div>
   </div>
 </div>
