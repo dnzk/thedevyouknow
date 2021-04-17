@@ -1,26 +1,37 @@
 <div class="blog-drafter">
-  <form class="blog-drafter__form">
+  <form class="blog-drafter__form" phx-submit="save">
     <div class="blog-drafter__form-field">
       <label for="title">Title</label>
       <input phx-keyup="title-update" id="title" type="text" name="title" />
     </div>
     <div class="blog-drafter__form-field">
       <label for="excerpt">Excerpt</label>
-      <textarea id="excerpt"></textarea>
+      <textarea phx-keyup="excerpt-update" value="<%= @preview.excerpt %>" id="excerpt"></textarea>
     </div>
     <div class="blog-drafter__form-field">
       <label for="tags">Tags</label>
-      <input id="tags" type="tags" name="tags" />
+      <input phx-keyup="tags-update" id="tags" type="tags" name="tags" />
     </div>
     <div class="blog-drafter__form-field">
       <label for="content">Content</label>
       <textarea phx-keyup="content-update" id="content" class="blog-drafter__content-field"></textarea>
     </div>
+    <button type="submit">SAVE</button>
   </form>
   <div class="blog-drafter__preview">
     <p>LIVE PREVIEW:</p>
     <div>
       <h1><%= @preview.title %></h1>
+      <%= if @preview.excerpt do %>
+        <div>
+          <%= @preview.excerpt %>
+        </div>
+      <% end %>
+      <%= if @preview.tags do %>
+        <%= for tag <- @preview.tags do %>
+          <p><%= tag %></p>
+        <% end %>
+      <% end %>
       <%= raw(@preview.content) %>
     </div>
   </div>
