@@ -11,7 +11,7 @@ defmodule Blog do
     @repo.get!(Article, id)
   end
 
-  def get_article_byd(attrs) do
+  def get_article_by(attrs) do
     @repo.get_by(Article, attrs)
   end
 end
