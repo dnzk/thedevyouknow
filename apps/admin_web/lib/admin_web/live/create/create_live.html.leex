@@ -1,37 +1,32 @@
 <div class="blog-drafter">
-  <form class="blog-drafter__form" phx-submit="save">
+  <%= f = form_for @article, "#", [phx_change: :update, phx_submit: :save, class: "blog-drafter__form"] %>
     <div class="blog-drafter__form-field">
-      <label for="title">Title</label>
-      <input phx-keyup="title-update" id="title" type="text" name="title" />
+      <%= label f, :title %>
+      <%= text_input f, :title %>
+      <%= error_tag f, :title %>
     </div>
+
     <div class="blog-drafter__form-field">
-      <label for="excerpt">Excerpt</label>
-      <textarea phx-keyup="excerpt-update" value="<%= @preview.excerpt %>" id="excerpt"></textarea>
+      <%= label f, :excerpt %>
+      <%= textarea f, :excerpt, [class: "blog-drafter__excerpt-field"] %>
+      <%= error_tag f, :excerpt %>
     </div>
+
     <div class="blog-drafter__form-field">
-      <label for="tags">Tags</label>
-      <input phx-keyup="tags-update" id="tags" type="tags" name="tags" />
+      <%= label f, :content %>
+      <%= textarea f, :content, [class: "blog-drafter__content-field"] %>
+      <%= error_tag f, :content %>
     </div>
-    <div class="blog-drafter__form-field">
-      <label for="content">Content</label>
-      <textarea phx-keyup="content-update" id="content" class="blog-drafter__content-field"></textarea>
-    </div>
+
     <button type="submit">SAVE</button>
   </form>
   <div class="blog-drafter__preview">
     <p>LIVE PREVIEW:</p>
+    <h1><%= @preview.title %></h1>
     <div>
-      <h1><%= @preview.title %></h1>
-      <%= if @preview.excerpt do %>
-        <div>
-          <%= @preview.excerpt %>
-        </div>
-      <% end %>
-      <%= if @preview.tags do %>
-        <%= for tag <- @preview.tags do %>
-          <p><%= tag %></p>
-        <% end %>
-      <% end %>
+      <%= @preview.excerpt %>
+    </div>
+    <div>
       <%= raw(@preview.content) %>
     </div>
   </div>

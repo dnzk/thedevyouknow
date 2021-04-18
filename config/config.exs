@@ -31,6 +31,15 @@ config :blog_web, BlogWeb.Endpoint,
   pubsub_server: BlogWeb.PubSub,
   live_view: [signing_salt: "833f2ja6"]
 
+config :blog, ecto_repos: [Blog.Repo]
+
+config :blog, Blog.Repo,
+  database: "tdyk_blog",
+  username: "danish",
+  password: "",
+  hostname: "localhost",
+  port: "5432"
+
 # Sample configuration:
 #
 #     config :logger, :console,

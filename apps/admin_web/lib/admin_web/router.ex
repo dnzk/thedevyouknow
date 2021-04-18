@@ -19,6 +19,7 @@ defmodule AdminWeb.Router do
 
     live "/", AdminLive, :index
     live "/create", CreateLive, :index
+    live "/review", ReviewLive, :index
   end
 
   # Other scopes may use custom stacks.
