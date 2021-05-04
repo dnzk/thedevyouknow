@@ -18,8 +18,6 @@ defmodule Blog do
   end
 
   def insert_article(attrs) do
-    IO.inspect(attrs)
-
     %Article{}
     |> Article.changeset(
       Map.merge(attrs, %{is_live: false, is_reviewed: false, is_taken_down: false})
