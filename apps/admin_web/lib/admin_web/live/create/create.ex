@@ -1,4 +1,4 @@
-defmodule AdminWeb.CreateLive do
+defmodule AdminWeb.ArticleLive.Create do
   use AdminWeb, :live_view
   alias Blog
   alias Hypermarkdown

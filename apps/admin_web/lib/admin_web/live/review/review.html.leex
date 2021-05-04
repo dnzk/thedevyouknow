@@ -1,0 +1,18 @@
+<h1 id="reviewTitle">Review</h1>
+<section aria-labelledby="reviewTitle" class="blog-review">
+  <section aria-label="Links to articles to review" class="blog-review__review-list">
+    <ul>
+    <%= for article <- @articles do %>
+      <li>
+        <%= live_patch article.title, to: Routes.article_review_path(@socket, :review, article) %>
+      </li>
+    <% end %>
+    </ul>
+  </section>
+
+  <%= if @live_action == :review do %>
+    <section aria-label="Review section" class="blog-review__review-item">
+      <%= live_component(@socket, AdminWeb.ReviewLive.ReviewArticle, article: @article, id: :review_article) %>
+    </section>
+  <% end %>
+</section>

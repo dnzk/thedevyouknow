@@ -45,3 +45,16 @@
     height: 15rem;
   }
 }
+
+.blog-review {
+  display: grid;
+  grid-auto-columns: 30rem 1fr;
+
+  &__review-list {
+    grid-column-start: 1;
+  }
+
+  &__review-item {
+    grid-column-start: 2;
+  }
+}

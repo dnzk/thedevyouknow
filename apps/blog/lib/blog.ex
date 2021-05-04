@@ -26,4 +26,10 @@ defmodule Blog do
     )
     |> @repo.insert()
   end
+
+  def publish_article(id) do
+    get_article!(id)
+    |> Article.changeset(%{is_live: true, is_reviewed: true, is_taken_down: false})
+    |> @repo.update()
+  end
 end
