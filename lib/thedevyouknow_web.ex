@@ -24,6 +24,7 @@ defmodule ThedevyouknowWeb do
       import Plug.Conn
       import ThedevyouknowWeb.Gettext
       alias ThedevyouknowWeb.Router.Helpers, as: Routes
+      alias ThedevyouknowWeb.WriterRouter.Helpers, as: WriterRoutes
     end
   end
 
@@ -90,6 +91,7 @@ defmodule ThedevyouknowWeb do
       import ThedevyouknowWeb.ErrorHelpers
       import ThedevyouknowWeb.Gettext
       alias ThedevyouknowWeb.Router.Helpers, as: Routes
+      alias ThedevyouknowWeb.WriterRouter.Helpers, as: WriterRoutes
     end
   end
 

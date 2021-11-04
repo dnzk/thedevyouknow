@@ -25,6 +25,7 @@ defmodule ThedevyouknowWeb.ConnCase do
       import ThedevyouknowWeb.ConnCase
 
       alias ThedevyouknowWeb.Router.Helpers, as: Routes
+      alias ThedevyouknowWeb.WriterRouter.Helpers, as: WriterRoutes
 
       # The default endpoint for testing
       @endpoint ThedevyouknowWeb.Endpoint
