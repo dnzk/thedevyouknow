@@ -87,3 +87,14 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+/* The Dev You Know */
+body {
+  background-color: #e3e3e1;
+}
+.Home__content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+}
