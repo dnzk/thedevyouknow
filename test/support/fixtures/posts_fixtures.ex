@@ -19,4 +19,19 @@ defmodule Thedevyouknow.PostsFixtures do
 
     blog
   end
+
+  @doc """
+  Generate a tag.
+  """
+  def tag_fixture(attrs \\ %{}) do
+    {:ok, tag} =
+      attrs
+      |> Enum.into(%{
+        name: "some name",
+        slug: "some slug"
+      })
+      |> Thedevyouknow.Posts.create_tag()
+
+    tag
+  end
 end

@@ -2,7 +2,6 @@ defmodule Thedevyouknow.Posts.Blog do
   use Ecto.Schema
   import Ecto.Changeset
   alias Thedevyouknow.Posts.Blog
-  alias String
 
   schema "blogs" do
     field(:title, :string)
