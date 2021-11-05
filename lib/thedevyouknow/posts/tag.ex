@@ -7,6 +7,8 @@ defmodule Thedevyouknow.Posts.Tag do
     field :name, :string
     field :slug, :string
 
+    many_to_many :blogs, Thedevyouknow.Posts.Blog, join_through: "blogs_tags"
+
     timestamps()
   end
 
