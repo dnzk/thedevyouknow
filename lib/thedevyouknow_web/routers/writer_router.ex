@@ -8,12 +8,13 @@ defmodule ThedevyouknowWeb.WriterRouter do
     plug :put_root_layout, {ThedevyouknowWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    # TODO: Add require writer access plug
+    # TODO: Add require_writer_access_plug
   end
 
   scope "/", ThedevyouknowWeb do
     pipe_through :browser
 
     get "/", WriterController, :index
+    resources "/blogs", WriterController, only: [:new, :create]
   end
 end
