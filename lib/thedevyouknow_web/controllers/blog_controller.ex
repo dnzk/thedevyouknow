@@ -45,7 +45,7 @@ defmodule ThedevyouknowWeb.BlogController do
     blog = Posts.get_blog!(blog_id)
 
     case Posts.update_blog(blog, %{"is_reviewed" => true}) do
-      {:ok, _blog} -> redirect(conn, to: WriterRoutes.blog_path(conn, :index))
+      {:ok, _blog} -> redirect(conn, to: WriterRoutes.blog_path(conn, :writer_index))
       {:error, _error} -> render(conn, "review.html", blog: blog, error: "There was an error")
     end
   end

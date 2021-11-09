@@ -60,9 +60,17 @@ defmodule Thedevyouknow.Posts do
   end
 
   defp slugify_title(changeset) do
-    case fetch_change(changeset, :title) do
-      {:ok, new_title} -> put_change(changeset, :slug, slugify(new_title))
-      :error -> changeset
+    case fetch_change(changeset, :slug) do
+      {:ok, new_slug} ->
+        # TODO: validate new_slug
+        # and slugify
+        put_change(changeset, :slug, new_slug)
+
+      :error ->
+        case fetch_change(changeset, :title) do
+          {:ok, new_title} -> put_change(changeset, :slug, slugify(new_title))
+          :error -> changeset
+        end
     end
   end
 

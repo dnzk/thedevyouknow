@@ -6,6 +6,13 @@
   </label>
   <%= error_tag f, :title %>
 
+  <%= if @changeset.action do %>
+  <label>
+    Slug: <%= text_input f, :slug %>
+  </label>
+  <%= error_tag f, :slug %>
+  <% end %>
+
   <label>
     Excerpt: <%= textarea f, :excerpt %>
   </label>

@@ -18,8 +18,9 @@ defmodule Thedevyouknow.Posts.Blog do
 
   def new_changeset(%Blog{} = blog, attrs) do
     blog
-    |> cast(attrs, [:title, :excerpt, :body])
+    |> cast(attrs, [:title, :slug, :excerpt, :body])
     |> validate_required([:title, :body])
+    |> unique_constraint(:slug)
     |> put_change(:is_reviewed, false)
     |> put_change(:is_published, false)
   end
@@ -27,7 +28,7 @@ defmodule Thedevyouknow.Posts.Blog do
   @doc false
   def changeset(%Blog{} = blog, attrs) do
     blog
-    |> cast(attrs, [:title, :excerpt, :body, :is_reviewed])
+    |> cast(attrs, [:title, :slug, :excerpt, :body, :is_reviewed])
     |> validate_required([:title, :body])
   end
 end
