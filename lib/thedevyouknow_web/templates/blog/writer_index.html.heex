@@ -8,6 +8,36 @@
   </ul>
 </nav>
 
-<%= for blog <- @blogs do %>
-<p><%= blog.title %></p>
-<% end %>
+<div>
+  <p>Blogs to review:</p>
+  <ul>
+  <%= for blog <- @blogs_to_review do %>
+    <li>
+      <%= link blog.title, to: WriterRoutes.blog_review_path(@conn, :review, blog.id) %>
+    </li>
+  <% end %>
+  </ul>
+</div>
+
+<div>
+  <p>Blogs to publish:</p>
+  <ul>
+  <%= for blog <- @blogs_to_publish do %>
+    <li>
+      <%= link blog.title, to: WriterRoutes.blog_review_path(@conn, :review, blog.id) %>
+    </li>
+  <% end%>
+  </ul>
+</div>
+
+
+<div>
+  <p>Published blogs:</p>
+  <ul>
+  <%= for blog <- @published_blogs do %>
+    <li>
+      <%= link blog.title, to: WriterRoutes.blog_review_path(@conn, :review, blog.id) %>
+    </li>
+  <% end%>
+  </ul>
+</div>

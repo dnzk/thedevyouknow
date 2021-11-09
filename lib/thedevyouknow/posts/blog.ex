@@ -28,7 +28,7 @@ defmodule Thedevyouknow.Posts.Blog do
   @doc false
   def changeset(%Blog{} = blog, attrs) do
     blog
-    |> cast(attrs, [:title, :slug, :excerpt, :body, :is_reviewed])
+    |> cast(attrs, [:title, :slug, :excerpt, :body, :is_reviewed, :is_published])
     |> validate_required([:title, :body])
   end
 end

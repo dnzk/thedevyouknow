@@ -22,6 +22,18 @@ defmodule Thedevyouknow.Posts do
     Repo.all(Blog)
   end
 
+  def list_published_blogs do
+    Repo.all(from b in Blog, where: b.is_reviewed == true and b.is_published == true)
+  end
+
+  def list_unreviewed_blogs do
+    Repo.all(from b in Blog, where: not b.is_reviewed)
+  end
+
+  def list_ready_to_publish_blogs do
+    Repo.all(from b in Blog, where: b.is_reviewed and not b.is_published)
+  end
+
   @doc """
   Gets a single blog.
 

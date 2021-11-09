@@ -8,4 +8,9 @@
   </div>
 </div>
 
-<%= link "I have reviewed this blog", to: WriterRoutes.blog_review_path(@conn, :mark_as_reviewed, @blog.id), method: :post %>
+<%= if not @blog.is_reviewed do %>
+  <%= button "I have reviewed this blog", to: WriterRoutes.blog_review_path(@conn, :mark_as_reviewed, @blog.id), method: :put %>
+<% end %>
+<%= if @blog.is_reviewed and not @blog.is_published do %>
+  <%= button "Publish this blog", to: WriterRoutes.blog_review_path(@conn, :mark_as_published, @blog.id), method: :put %>
+<% end %>

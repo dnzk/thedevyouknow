@@ -18,7 +18,8 @@ defmodule ThedevyouknowWeb.WriterRouter do
 
     resources "/blogs", BlogController, only: [:new, :create] do
       get "/review", BlogController, :review, as: :review
-      post "/review", BlogController, :mark_as_reviewed, as: :review
+      put "/review", BlogController, :mark_as_reviewed, as: :review
+      put "/publish", BlogController, :mark_as_published, as: :review
     end
   end
 end

@@ -3,15 +3,21 @@ defmodule ThedevyouknowWeb.BlogController do
   alias Thedevyouknow.Posts
 
   def index(conn, _params) do
-    blogs = Posts.list_blogs()
+    blogs = Posts.list_published_blogs()
     render(conn, "index.html", blogs: blogs)
   end
 
   def writer_index(conn, _params) do
-    # TODO: get blogs by statuses
-    # and display them in order
-    blogs = Posts.list_blogs()
-    render(conn, "writer_index.html", blogs: blogs)
+    # TODO: optimize these three queries, possibly into just one custom query
+    blogs_to_review = Posts.list_unreviewed_blogs()
+    blogs_to_publish = Posts.list_ready_to_publish_blogs()
+    published_blogs = Posts.list_published_blogs()
+
+    render(conn, "writer_index.html",
+      blogs_to_review: blogs_to_review,
+      blogs_to_publish: blogs_to_publish,
+      published_blogs: published_blogs
+    )
   end
 
   def view(conn, %{"blog_slug" => blog_slug}) do
@@ -45,6 +51,15 @@ defmodule ThedevyouknowWeb.BlogController do
     blog = Posts.get_blog!(blog_id)
 
     case Posts.update_blog(blog, %{"is_reviewed" => true}) do
+      {:ok, _blog} -> redirect(conn, to: WriterRoutes.blog_path(conn, :writer_index))
+      {:error, _error} -> render(conn, "review.html", blog: blog, error: "There was an error")
+    end
+  end
+
+  def mark_as_published(conn, %{"blog_id" => blog_id}) do
+    blog = Posts.get_blog!(blog_id)
+
+    case Posts.update_blog(blog, %{"is_published" => true}) do
       {:ok, _blog} -> redirect(conn, to: WriterRoutes.blog_path(conn, :writer_index))
       {:error, _error} -> render(conn, "review.html", blog: blog, error: "There was an error")
     end
