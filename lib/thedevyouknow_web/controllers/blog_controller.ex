@@ -14,8 +14,8 @@ defmodule ThedevyouknowWeb.BlogController do
     render(conn, "writer_index.html", blogs: blogs)
   end
 
-  def view(conn, %{"blog_id" => blog_id}) do
-    blog = Posts.get_blog!(blog_id)
+  def view(conn, %{"blog_slug" => blog_slug}) do
+    blog = Posts.get_blog_by_slug!(blog_slug)
     render(conn, "view.html", blog: blog)
   end
 

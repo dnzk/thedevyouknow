@@ -5,6 +5,7 @@ defmodule Thedevyouknow.Posts do
 
   import Ecto.Query, warn: false
   alias Thedevyouknow.Repo
+  import Ecto.Changeset
 
   alias Thedevyouknow.Posts.Blog
 
@@ -37,6 +38,8 @@ defmodule Thedevyouknow.Posts do
   """
   def get_blog!(id), do: Repo.get!(Blog, id)
 
+  def get_blog_by_slug!(slug), do: Repo.get_by!(Blog, slug: slug)
+
   @doc """
   Creates a blog.
 
@@ -52,7 +55,22 @@ defmodule Thedevyouknow.Posts do
   def create_blog(attrs \\ %{}) do
     %Blog{}
     |> Blog.new_changeset(attrs)
+    |> slugify_title()
     |> Repo.insert()
+  end
+
+  defp slugify_title(changeset) do
+    case fetch_change(changeset, :title) do
+      {:ok, new_title} -> put_change(changeset, :slug, slugify(new_title))
+      :error -> changeset
+    end
+  end
+
+  @spec slugify(String.t()) :: String.t()
+  defp slugify(title) do
+    title
+    |> String.downcase()
+    |> String.replace(~r/[^\w-]+/u, "-")
   end
 
   @doc """

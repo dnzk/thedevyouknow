@@ -20,7 +20,7 @@ defmodule ThedevyouknowWeb.Router do
     get "/", PageController, :index
     get "/about", PageController, :about
     get "/blogs", BlogController, :index
-    get "/blogs/:blog_id", BlogController, :view
+    get "/blogs/:blog_slug", BlogController, :view
   end
 
   # Other scopes may use custom stacks.

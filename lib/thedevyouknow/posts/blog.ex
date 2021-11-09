@@ -9,6 +9,7 @@ defmodule Thedevyouknow.Posts.Blog do
     field(:body, :string)
     field(:is_reviewed, :boolean, default: false)
     field(:is_published, :boolean, default: false)
+    field(:slug, :string)
 
     many_to_many :tags, Thedevyouknow.Posts.Tag, join_through: "blogs_tags"
 

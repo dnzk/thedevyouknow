@@ -2,6 +2,6 @@
 
 <%= for blog <- @blogs do %>
   <p>
-    <%= link blog.title, to: Routes.blog_path(@conn, :view, blog.id) %>
+    <%= link blog.title, to: Routes.blog_path(@conn, :view, blog) %>
   </p>
 <% end %>
