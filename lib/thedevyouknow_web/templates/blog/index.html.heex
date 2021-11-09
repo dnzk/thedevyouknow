@@ -1,13 +1,7 @@
-<h1>Writer's page</h1>
-
-<nav>
-  <ul>
-    <li>
-      <%= link "Create", to: WriterRoutes.blog_path(@conn, :new) %>
-    </li>
-  </ul>
-</nav>
+<h1>Blogs</h1>
 
 <%= for blog <- @blogs do %>
-<p><%= blog.title %></p>
+  <p>
+    <%= link blog.title, to: Routes.blog_path(@conn, :view, blog.id) %>
+  </p>
 <% end %>

@@ -7,6 +7,18 @@ defmodule ThedevyouknowWeb.BlogController do
     render(conn, "index.html", blogs: blogs)
   end
 
+  def writer_index(conn, _params) do
+    # TODO: get blogs by statuses
+    # and display them in order
+    blogs = Posts.list_blogs()
+    render(conn, "writer_index.html", blogs: blogs)
+  end
+
+  def view(conn, %{"blog_id" => blog_id}) do
+    blog = Posts.get_blog!(blog_id)
+    render(conn, "view.html", blog: blog)
+  end
+
   def new(conn, _params) do
     changeset = Posts.change_blog(%Posts.Blog{}, %{})
     render(conn, "new.html", changeset: changeset)

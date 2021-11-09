@@ -14,7 +14,7 @@ defmodule ThedevyouknowWeb.WriterRouter do
   scope "/", ThedevyouknowWeb do
     pipe_through :browser
 
-    get "/", BlogController, :index
+    get "/", BlogController, :writer_index
 
     resources "/blogs", BlogController, only: [:new, :create] do
       get "/review", BlogController, :review, as: :review

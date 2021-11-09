@@ -18,6 +18,9 @@ defmodule ThedevyouknowWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/about", PageController, :about
+    get "/blogs", BlogController, :index
+    get "/blogs/:blog_id", BlogController, :view
   end
 
   # Other scopes may use custom stacks.
