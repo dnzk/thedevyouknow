@@ -51,7 +51,7 @@ defmodule Thedevyouknow.Posts do
   """
   def create_blog(attrs \\ %{}) do
     %Blog{}
-    |> Blog.changeset(attrs)
+    |> Blog.new_changeset(attrs)
     |> Repo.insert()
   end
 

@@ -7,16 +7,26 @@ defmodule Thedevyouknow.Posts.Blog do
     field(:title, :string)
     field(:excerpt, :string)
     field(:body, :string)
+    field(:is_reviewed, :boolean, default: false)
+    field(:is_published, :boolean, default: false)
 
     many_to_many :tags, Thedevyouknow.Posts.Tag, join_through: "blogs_tags"
 
     timestamps()
   end
 
+  def new_changeset(%Blog{} = blog, attrs) do
+    blog
+    |> cast(attrs, [:title, :excerpt, :body])
+    |> validate_required([:title, :body])
+    |> put_change(:is_reviewed, false)
+    |> put_change(:is_published, false)
+  end
+
   @doc false
   def changeset(%Blog{} = blog, attrs) do
     blog
-    |> cast(attrs, [:title, :excerpt, :body])
+    |> cast(attrs, [:title, :excerpt, :body, :is_reviewed])
     |> validate_required([:title, :body])
   end
 end

@@ -1,0 +1,11 @@
+<h1>Review page</h1>
+
+<div>
+  <h1><%= @blog.title %></h1>
+  <p><%= @blog.excerpt %></p>
+  <div>
+    <%= raw @blog.body %>
+  </div>
+</div>
+
+<%= link "I have reviewed this blog", to: WriterRoutes.blog_review_path(@conn, :mark_as_reviewed, @blog.id), method: :post %>

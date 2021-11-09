@@ -1,6 +1,6 @@
 <h1>New blog page</h1>
 
-<%= form_for @changeset, WriterRoutes.writer_path(@conn, :create), fn f -> %>
+<%= form_for @changeset, WriterRoutes.blog_path(@conn, :create), fn f -> %>
   <label>
     Title: <%= text_input f, :title %>
   </label>

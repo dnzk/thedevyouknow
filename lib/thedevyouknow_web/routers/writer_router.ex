@@ -14,7 +14,11 @@ defmodule ThedevyouknowWeb.WriterRouter do
   scope "/", ThedevyouknowWeb do
     pipe_through :browser
 
-    get "/", WriterController, :index
-    resources "/blogs", WriterController, only: [:new, :create]
+    get "/", BlogController, :index
+
+    resources "/blogs", BlogController, only: [:new, :create] do
+      get "/review", BlogController, :review, as: :review
+      post "/review", BlogController, :mark_as_reviewed, as: :review
+    end
   end
 end
