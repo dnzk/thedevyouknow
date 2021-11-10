@@ -3,6 +3,7 @@ defmodule ThedevyouknowWeb.UserSessionControllerTest do
 
   import Thedevyouknow.AccountsFixtures
 
+  # TODO: add writer-*.thedevyouknow.com host to conn
   setup do
     %{user: user_fixture()}
   end
