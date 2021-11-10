@@ -1,6 +1,9 @@
 defmodule ThedevyouknowWeb.Router do
   use ThedevyouknowWeb, :router
 
+  # Import authentication plugs
+  import ThedevyouknowWeb.UserAuth
+
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
@@ -8,6 +11,7 @@ defmodule ThedevyouknowWeb.Router do
     plug :put_root_layout, {ThedevyouknowWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :fetch_current_user
   end
 
   pipeline :api do
